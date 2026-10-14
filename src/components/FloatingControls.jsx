@@ -30,7 +30,7 @@ export default function FloatingControls({ isMusicPlaying, setIsMusicPlaying, on
           type="button" 
           className={`vinyl-disc-btn ${isMusicPlaying ? 'playing' : ''}`} 
           onClick={toggleMusic}
-          title={isMusicPlaying ? 'Tạm dừng nhạc Guzheng cung đình' : 'Bật nhạc Guzheng cung đình'}
+          title={isMusicPlaying ? 'Tạm dừng nhạc: Rước Nàng (Remix)' : 'Bật nhạc: Rước Nàng (Remix)'}
           aria-label="Điều khiển âm nhạc"
         >
           <div className="vinyl-center-dot">

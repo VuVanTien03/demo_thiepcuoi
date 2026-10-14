@@ -1,15 +1,15 @@
 /* ===================================================================
    AUDIO ENGINE (REACT EDITION)
-   Web Audio API - Wax crack, paper unseal, Asian chimes & Guzheng melody
+   Background Music: Rước Nàng (Remix)
+   Web Audio API - Wax crack, paper unseal, Asian chimes & Coin drops
    =================================================================== */
 
 class AudioManager {
   constructor() {
     this.ctx = null;
     this.isPlayingMusic = false;
-    this.musicTimer = null;
     this.masterGain = null;
-    this.musicGain = null;
+    this.bgMusic = null;
   }
 
   init() {
@@ -17,15 +17,31 @@ class AudioManager {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       this.ctx = new AudioContext();
       this.masterGain = this.ctx.createGain();
-      this.masterGain.gain.setValueAtTime(0.8, this.ctx.currentTime);
+      this.masterGain.gain.setValueAtTime(0.85, this.ctx.currentTime);
       this.masterGain.connect(this.ctx.destination);
-
-      this.musicGain = this.ctx.createGain();
-      this.musicGain.gain.setValueAtTime(0.25, this.ctx.currentTime);
-      this.musicGain.connect(this.masterGain);
     }
     if (this.ctx.state === 'suspended') {
       this.ctx.resume();
+    }
+    this.initAudio();
+  }
+
+  initAudio() {
+    if (!this.bgMusic) {
+      // Primary clean URI in public/assets/audio/
+      this.bgMusic = new Audio('/assets/audio/ruoc_nang_remix.mp3');
+      this.bgMusic.loop = true;
+      this.bgMusic.volume = 0.6;
+      this.bgMusic.preload = 'auto';
+
+      // Fallback in case of path issue
+      this.bgMusic.addEventListener('error', () => {
+        console.warn('Audio primary path error, falling back to root mp3 path');
+        if (this.bgMusic.src.includes('ruoc_nang_remix.mp3')) {
+          this.bgMusic.src = encodeURI('/Rước Nàng (Remix. ).mp3');
+          this.bgMusic.load();
+        }
+      });
     }
   }
 
@@ -110,6 +126,10 @@ class AudioManager {
     });
   }
 
+  playChime() {
+    this.playCelebrationChime();
+  }
+
   playCoinSound() {
     this.init();
     const t = this.ctx.currentTime;
@@ -137,68 +157,22 @@ class AudioManager {
 
   startAmbientMusic() {
     this.init();
-    if (this.isPlayingMusic) return;
     this.isPlayingMusic = true;
 
-    const scale = [
-      261.63, 293.66, 329.63, 392.00, 440.00,
-      523.25, 587.33, 659.25, 783.99, 880.00,
-      1046.50
-    ];
-
-    const melody = [
-      { n: 5, d: 0.6 }, { n: 6, d: 0.6 }, { n: 8, d: 0.8 }, { n: 7, d: 0.6 },
-      { n: 8, d: 1.2 }, { n: 4, d: 0.6 }, { n: 5, d: 0.6 }, { n: 7, d: 0.8 },
-      { n: 6, d: 1.4 }, { n: 7, d: 0.5 }, { n: 8, d: 0.5 }, { n: 9, d: 0.8 },
-      { n: 8, d: 0.6 }, { n: 6, d: 0.6 }, { n: 5, d: 1.5 }
-    ];
-
-    let noteIdx = 0;
-    const playNext = () => {
-      if (!this.isPlayingMusic) return;
-
-      const item = melody[noteIdx];
-      const freq = scale[item.n];
-      const duration = item.d;
-
-      this.pluckGuzheng(freq, duration);
-
-      if (noteIdx % 4 === 0) {
-        this.pluckGuzheng(scale[item.n % 3], duration * 1.5, 0.15);
+    if (this.bgMusic) {
+      const playPromise = this.bgMusic.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.warn('Audio play was prevented by browser autoplay policy:', error);
+        });
       }
-
-      noteIdx = (noteIdx + 1) % melody.length;
-      this.musicTimer = setTimeout(playNext, duration * 850);
-    };
-
-    playNext();
-  }
-
-  pluckGuzheng(freq, duration, customGain = 0.28) {
-    if (!this.ctx) return;
-    const t = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(freq, t);
-
-    gain.gain.setValueAtTime(0.0001, t);
-    gain.gain.linearRampToValueAtTime(customGain, t + 0.02);
-    gain.gain.exponentialRampToValueAtTime(0.0001, t + duration * 1.6);
-
-    osc.connect(gain);
-    gain.connect(this.musicGain);
-
-    osc.start(t);
-    osc.stop(t + duration * 1.7);
+    }
   }
 
   stopAmbientMusic() {
     this.isPlayingMusic = false;
-    if (this.musicTimer) {
-      clearTimeout(this.musicTimer);
-      this.musicTimer = null;
+    if (this.bgMusic) {
+      this.bgMusic.pause();
     }
   }
 
