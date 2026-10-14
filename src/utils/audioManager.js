@@ -29,7 +29,7 @@ class AudioManager {
   initAudio() {
     if (!this.bgMusic) {
       // Primary clean URI in public/assets/audio/
-      this.bgMusic = new Audio('assets/audio/Rước Nàng (Remix. ).mp3');
+      this.bgMusic = new Audio('/assets/audio/Rước Nàng (Remix).mp3');
       this.bgMusic.loop = true;
       this.bgMusic.volume = 0.6;
       this.bgMusic.preload = 'auto';
