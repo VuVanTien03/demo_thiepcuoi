@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="cornerGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <!-- Traditional geometric corner pattern (Hoa văn góc triện cổ) -->
+  <path d="M5,95 V20 H20 V35 H35 V20 H80 V5 H5 Z" fill="none" stroke="url(#cornerGold)" stroke-width="2.5" stroke-linejoin="miter"/>
+  <path d="M12,88 V27 H27 V42 H42 V27 H73 V12 H12 Z" fill="none" stroke="#991b1b" stroke-width="1.5" stroke-linejoin="miter"/>
+  <rect x="23" y="23" width="8" height="8" fill="url(#cornerGold)"/>
+</svg>

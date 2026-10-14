@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 260" width="120" height="260">
+  <defs>
+    <radialGradient id="lanternGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#f87171" stop-opacity="0.8"/>
+      <stop offset="85%" stop-color="#b91c1c" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#7f1d1d" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="lanternFilter" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#ef4444" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  <!-- Hanging cord -->
+  <line x1="60" y1="0" x2="60" y2="40" stroke="#d97706" stroke-width="2"/>
+  <!-- Top cap -->
+  <rect x="42" y="38" width="36" height="8" rx="2" fill="#d97706"/>
+  <rect x="48" y="34" width="24" height="5" rx="1" fill="#78350f"/>
+  <!-- Lantern Body -->
+  <ellipse cx="60" cy="110" rx="46" ry="65" fill="url(#lanternGlow)" filter="url(#lanternFilter)"/>
+  <!-- Ribs / Vertical Curves -->
+  <path d="M60,46 C40,75 40,145 60,175" fill="none" stroke="#7f1d1d" stroke-width="1.5" opacity="0.6"/>
+  <path d="M60,46 C80,75 80,145 60,175" fill="none" stroke="#7f1d1d" stroke-width="1.5" opacity="0.6"/>
+  <path d="M60,46 C20,75 20,145 60,175" fill="none" stroke="#7f1d1d" stroke-width="1.2" opacity="0.4"/>
+  <path d="M60,46 C100,75 100,145 60,175" fill="none" stroke="#7f1d1d" stroke-width="1.2" opacity="0.4"/>
+  <!-- Central Song Hy subtle watermark -->
+  <text x="60" y="118" fill="#fef08a" font-family="sans-serif" font-size="24" font-weight="bold" text-anchor="middle" opacity="0.45">囍</text>
+  <!-- Bottom cap -->
+  <rect x="44" y="174" width="32" height="8" rx="2" fill="#d97706"/>
+  <!-- Tassel knot & threads -->
+  <circle cx="60" cy="186" r="4" fill="#d97706"/>
+  <path d="M55,189 L52,245 M58,190 L57,250 M60,190 L60,255 M62,190 L63,250 M65,189 L68,245" stroke="#dc2626" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M50,225 H70" stroke="#d97706" stroke-width="2"/>
+</svg>

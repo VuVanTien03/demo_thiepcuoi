@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  thiepcuoi-react:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: thiepcuoi-react:latest
+    container_name: thiepcuoi-react
+    restart: unless-stopped
+    ports:
+      - "80:80"

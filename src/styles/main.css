@@ -1,0 +1,361 @@
+/* ===================================================================
+   NHẬT BÌNH ĐỎ - HOÀNG GIA ĐẠI HỶ (RED NHẬT BÌNH ROYAL WEDDING)
+   Main Stylesheet - Design System, Tokens, Layout & Components
+   =================================================================== */
+
+:root {
+  /* Royal Color Palette */
+  --c-red-royal: #7A0C0C;
+  --c-red-primary: #9B1B1B;
+  --c-red-light: #C22B2B;
+  --c-red-deep: #4D0808;
+  --c-red-dark: #2A0505;
+
+  --c-gold-primary: #D4AF37;
+  --c-gold-light: #FDE047;
+  --c-gold-shimmer: #FFF6B5;
+  --c-gold-dark: #8C6D1F;
+  --c-gold-border: #E5C158;
+
+  --c-paper-cream: #FDF9F2;
+  --c-paper-card: #F9F2E3;
+  --c-paper-dark: #ECE0CA;
+  --c-kraft: #4A2E1F;
+
+  --c-ink: #2B1D19;
+  --c-ink-muted: #6B5B53;
+  --c-nhatbinh-teal: #1D5D57;
+
+  /* Typography - Softer, More Elegant & Crystal-Clear Vietnamese Fonts */
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-royal: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Dancing Script', 'Great Vibes', cursive;
+  --font-sans: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Dimensions */
+  --card-max-width: 500px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--c-ink);
+  background-color: #120704;
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(122, 12, 12, 0.45) 0%, rgba(18, 7, 4, 0.98) 75%),
+    repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.02) 0px, rgba(212, 175, 55, 0.02) 2px, transparent 2px, transparent 14px);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Background Atmosphere Canvas */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Desktop Framing with Hanging Silk Lanterns */
+.desktop-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .desktop-backdrop {
+    display: block;
+  }
+}
+
+.lantern-hanger {
+  position: absolute;
+  top: -10px;
+  width: 120px;
+  height: auto;
+  transform-origin: top center;
+  animation: lanternSway 5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 15px 30px rgba(220, 38, 38, 0.5));
+}
+
+.lantern-hanger.left {
+  left: calc(50% - 410px);
+}
+
+.lantern-hanger.right {
+  right: calc(50% - 410px);
+  animation-delay: -2.5s;
+}
+
+@keyframes lanternSway {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+/* Royal App Viewport Container */
+.app-viewport {
+  width: 100%;
+  max-width: var(--card-max-width);
+  margin: 20px auto 40px;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--c-paper-cream);
+  background-image: 
+    radial-gradient(#d4af3718 1px, transparent 1px),
+    radial-gradient(#9b1b1b10 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  border-radius: 18px;
+  box-shadow: 
+    0 0 0 1px rgba(212, 175, 55, 0.5),
+    0 20px 70px rgba(0, 0, 0, 0.75), 
+    0 0 120px rgba(122, 12, 12, 0.4);
+  z-index: 10;
+  overflow: hidden;
+  transition: opacity 0.5s ease;
+}
+
+/* Outer & Inner Delicate Filigree Border */
+.app-viewport::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1.5px solid rgba(212, 175, 55, 0.6);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.app-viewport::after {
+  content: '';
+  position: absolute;
+  inset: 13px;
+  border: 1px dashed rgba(155, 27, 27, 0.35);
+  border-radius: 9px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Royal Brocade Arch Header Crest */
+.royal-header-crest {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background-image: url('/assets/images/royal_brocade_pattern.jpg');
+  background-size: cover;
+  background-position: center;
+  border-bottom: 3px solid var(--c-gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 -20px 30px rgba(0, 0, 0, 0.5);
+}
+
+.royal-header-crest::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(122, 12, 12, 0.3) 0%, rgba(20, 5, 3, 0.75) 100%);
+}
+
+.royal-crest-emblem {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.royal-crest-emblem img {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+  animation: floatEmblem 3.5s ease-in-out infinite alternate;
+}
+
+.royal-crest-badge {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--c-gold-shimmer);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 6px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Corner Traditional Ornaments */
+.corner-ornament {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 22;
+}
+
+.corner-ornament.top-left { top: 16px; left: 16px; }
+.corner-ornament.top-right { top: 16px; right: 16px; transform: scaleX(-1); }
+.corner-ornament.bottom-left { bottom: 16px; left: 16px; transform: scaleY(-1); }
+.corner-ornament.bottom-right { bottom: 16px; right: 16px; transform: scale(-1); }
+
+/* Section Styling */
+.invitation-section {
+  position: relative;
+  padding: 44px 22px;
+  text-align: center;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 16px auto 28px;
+  width: 82%;
+}
+
+.section-divider .line {
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--c-gold-primary), transparent);
+}
+
+.section-divider .emblem {
+  width: 26px;
+  height: 26px;
+  opacity: 0.9;
+}
+
+/* Typography Helpers - Softer Curves & Clear Diacritics */
+.title-royal {
+  font-family: var(--font-royal);
+  color: var(--c-red-primary);
+  font-size: 1.85rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 8px;
+  line-height: 1.25;
+  text-shadow: 0 1px 3px rgba(212, 175, 55, 0.2);
+}
+
+.title-script {
+  font-family: var(--font-script);
+  color: var(--c-gold-dark);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.subtitle-traditional {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--c-gold-dark);
+  font-weight: 600;
+}
+
+/* Buttons */
+.btn-royal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 30px;
+  border-radius: 999px;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-royal-primary {
+  background: linear-gradient(135deg, var(--c-red-light) 0%, var(--c-red-primary) 50%, var(--c-red-royal) 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(155, 27, 27, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--c-gold-border);
+}
+
+.btn-royal-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 24px rgba(155, 27, 27, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.btn-royal-gold {
+  background: linear-gradient(135deg, var(--c-gold-light) 0%, var(--c-gold-primary) 50%, var(--c-gold-dark) 100%);
+  color: #2A0505;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.45);
+  font-weight: 700;
+}
+
+.btn-royal-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 25px rgba(212, 175, 55, 0.7);
+}
+
+/* Metallic Gold Foil Shimmer Animation */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg, 
+    var(--c-gold-dark) 0%, 
+    var(--c-gold-primary) 25%, 
+    var(--c-gold-shimmer) 50%, 
+    var(--c-gold-primary) 75%, 
+    var(--c-gold-dark) 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerAnim 4s linear infinite;
+}
+
+@keyframes shimmerAnim {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes floatEmblem {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #120704;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-red-primary);
+  border-radius: 3px;
+}

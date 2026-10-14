@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff275"/>
+      <stop offset="25%" stop-color="#e5b839"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="75%" stop-color="#aa7c11"/>
+      <stop offset="100%" stop-color="#e5b839"/>
+    </linearGradient>
+    <filter id="goldShine" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-color="#5c0000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <!-- Song Hỷ (囍) Calligraphy in Royal Gold -->
+  <g fill="url(#goldGradient)" filter="url(#goldShine)">
+    <!-- Top Left -->
+    <rect x="25" y="25" width="65" height="14" rx="2"/>
+    <rect x="52" y="39" width="12" height="22"/>
+    <rect x="25" y="61" width="65" height="12" rx="2"/>
+    <!-- Top Right -->
+    <rect x="110" y="25" width="65" height="14" rx="2"/>
+    <rect x="137" y="39" width="12" height="22"/>
+    <rect x="110" y="61" width="65" height="12" rx="2"/>
+    <!-- Middle Horizontal Bar connecting both -->
+    <rect x="15" y="82" width="170" height="14" rx="3"/>
+    <!-- Vertical stems -->
+    <rect x="42" y="96" width="12" height="24"/>
+    <rect x="78" y="96" width="12" height="24"/>
+    <rect x="110" y="96" width="12" height="24"/>
+    <rect x="146" y="96" width="12" height="24"/>
+    <!-- Lower Horizontal Bar -->
+    <rect x="15" y="120" width="170" height="14" rx="3"/>
+    <!-- Bottom Left Box (Khẩu 口) -->
+    <path d="M30,140 h55 v40 h-55 z M42,152 h31 v16 h-31 z" fill-rule="evenodd"/>
+    <!-- Bottom Right Box (Khẩu 口) -->
+    <path d="M115,140 h55 v40 h-55 z M127,152 h31 v16 h-31 z" fill-rule="evenodd"/>
+  </g>
+</svg>
