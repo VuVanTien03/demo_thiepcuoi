@@ -11,8 +11,8 @@ export class ParticleEngine {
     this.petals = [];
     this.goldDust = [];
     this.confetti = [];
-    this.maxPetals = 28;
-    this.maxGoldDust = 35;
+    this.maxPetals = 6; // Reduced from 28 to 6 so hearts fall sparsely and gently
+    this.maxGoldDust = 15; // Reduced from 35 to 15 for a calmer background
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.wind = 0;
@@ -48,15 +48,15 @@ export class ParticleEngine {
     return {
       x: Math.random() * this.width,
       y: randomY ? Math.random() * this.height : -30,
-      size: 10 + Math.random() * 12,
-      speedY: 1.0 + Math.random() * 1.5,
-      speedX: -0.5 + Math.random() * 1.0,
+      size: 9 + Math.random() * 8,
+      speedY: 0.45 + Math.random() * 0.65, // slow, gentle floating
+      speedX: -0.3 + Math.random() * 0.6,
       rot: Math.random() * Math.PI * 2,
-      rotSpeed: (Math.random() - 0.5) * 0.03,
+      rotSpeed: (Math.random() - 0.5) * 0.02,
       flip: Math.random() * Math.PI,
-      flipSpeed: 0.02 + Math.random() * 0.03,
+      flipSpeed: 0.015 + Math.random() * 0.02,
       color: Math.random() > 0.4 ? 'rgba(235, 110, 120, ' : 'rgba(215, 60, 80, ',
-      opacity: 0.55 + Math.random() * 0.35,
+      opacity: 0.35 + Math.random() * 0.25, // softer, less intrusive
     };
   }
 

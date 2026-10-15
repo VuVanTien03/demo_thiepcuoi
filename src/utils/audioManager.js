@@ -29,16 +29,17 @@ class AudioManager {
   initAudio() {
     if (!this.bgMusic) {
       // Primary clean URI in public/assets/audio/
-      this.bgMusic = new Audio('/assets/audio/Rước Nàng (Remix).mp3');
+      const primaryPath = encodeURI('/assets/audio/Rước Nàng (Remix).mp3');
+      this.bgMusic = new Audio(primaryPath);
       this.bgMusic.loop = true;
       this.bgMusic.volume = 0.6;
       this.bgMusic.preload = 'auto';
 
       // Fallback in case of path issue
       this.bgMusic.addEventListener('error', () => {
-        console.warn('Audio primary path error, falling back to root mp3 path');
-        if (this.bgMusic.src.includes('ruoc_nang_remix.mp3')) {
-          this.bgMusic.src = encodeURI('/Rước Nàng (Remix. ).mp3');
+        console.warn('Audio primary path error, falling back to clean path');
+        if (!this.bgMusic.src.includes('ruoc_nang_remix.mp3')) {
+          this.bgMusic.src = '/assets/audio/ruoc_nang_remix.mp3';
           this.bgMusic.load();
         }
       });
